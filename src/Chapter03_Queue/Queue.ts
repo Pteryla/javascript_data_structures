@@ -1,7 +1,7 @@
 /* 队列是遵循先进先出（FIFO，也称为先来先服务）原则的一组有序的项。
 队列在尾部添加新元素，并从顶部移除元素。最新添加的元素必须排在队列的末尾。
 在现实中，最常见的队列的例子就是排队。 */
-class Queue {
+export default class Queue {
   count: number;
   lowestCount: number;
   items: {
@@ -9,15 +9,16 @@ class Queue {
   };
   constructor() {
     this.count = 0;
-    // 追踪第一个元素
+    // lowestCount追踪第一个元素
     this.lowestCount = 0;
     this.items = {};
   }
+  // 尾部添加
   enqueue(element: any) {
     this.items[this.count] = element;
     this.count++;
   }
-
+  // 顶部移除
   dequeue() {
     if (this.isEmpty()) {
       return undefined;
@@ -49,14 +50,3 @@ class Queue {
     return objString;
   }
 }
-
-const myQ = new Queue();
-myQ.enqueue(1);
-myQ.enqueue(2);
-myQ.enqueue(3);
-myQ.dequeue();
-myQ.dequeue();
-// myQ.dequeue();
-// myQ.dequeue();
-
-console.log(myQ);
